@@ -1,0 +1,57 @@
+%main.container
+  %h1.general-title-margin Сatalog
+  .hidden-xs.clearfix
+    .pull-right
+      .dropdown
+        %a.dropdown-toggle.dropdown-btn.width-240{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
+          Newest first
+          %i.fa.fa-angle-down.dropdown-icon
+        %ul.dropdown-menu
+          %li
+            %a{href: "#"} Newest first
+          %li
+            %a{href: "#"} Popular first
+          %li
+            %a{href: "#"} Price: Low to hight
+          %li
+            %a{href: "#"} Price: Low to hight
+    %ul.list-inline.pt-10.mb-25.mr-240.categories-list
+      %li.mr-35.active
+        = link_to posts_path, class: "filter-link" do
+          All
+          %span.badge.general-badge
+
+  .mb-40.visible-xs
+    %p.in-grey-600.small.mb-10 Filter by category
+    .dropdown.mb-20
+      %a.dropdown-toggle.dropdown-btn.width-100{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
+        Newest first
+        %i.fa.fa-angle-down.dropdown-icon
+      %ul.dropdown-menu
+        %li
+          %a{href: "#"} Newest first
+        %li
+          %a{href: "#"} Popular first
+        %li
+          %a{href: "#"} Price: Low to hight
+        %li
+          %a{href: "#"} Price: Low to hight
+    %p.in-grey-600.small.mb-10 Sort by
+    .dropdown
+      %a.dropdown-toggle.dropdown-btn.width-100{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
+        Newest first
+        %i.fa.fa-angle-down.dropdown-icon
+      %ul.dropdown-menu
+        %li
+          %a{href: "#"} Newest first
+        %li
+          %a{href: "#"} Popular first
+        %li
+          %a{href: "#"} Price: Low to hight
+        %li
+          %a{href: "#"} Price: Low to hight
+  .mb-120
+    .row
+
+    .text-center
+%button.btn.btn-primary View More

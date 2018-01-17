@@ -21,6 +21,7 @@ gem 'ffaker'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'figaro'
 
 group :development, :test do
   gem 'factory_girl_rails'

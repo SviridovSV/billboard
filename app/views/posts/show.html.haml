@@ -6,8 +6,12 @@
 %br
 = @post.text
 %br
-= link_to 'Edit', edit_post_path(@post)
-|
-= link_to "Delete", post_path(@post), method: :delete, data: {confirm: "Really delete the post?"}
+%div{:id => "buttons"}
+  = link_to 'Edit', edit_post_path(@post)
+  |
+  = link_to "Delete", post_path(@post), method: :delete, data: {confirm: "Really delete the post?"}
 %br
-= render partial: 'comments/form', post: @post
+%div{:id => "comments"}
+  = render partial: 'posts/comment', collection: @post.comments.reverse
+%div{:id => "new-comments"}
+  = render partial: 'comments/form', post: @post

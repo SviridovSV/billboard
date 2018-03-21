@@ -1,0 +1,10 @@
+%div{:id => "comment_#{comment.id}"}
+  .card.w-75
+    .card-body
+      %h5.card-title
+        Comment by #{comment_author(comment)}
+      %p.card-text= comment.body
+      %small
+        Posted #{distance_of_time_in_words(comment.created_at, Time.now)} later
+      %br/
+      = link_to "Delete", post_comment_path(comment.post, comment), method: :delete, data: {confirm: "Really delete the comment?"}, class: "btn btn-primary", remote: true

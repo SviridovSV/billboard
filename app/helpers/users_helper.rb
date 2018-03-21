@@ -1,5 +1,11 @@
 module UsersHelper
-  def full_name
-    @user.first_name + ' ' + @user.last_name
+
+  def coordinates(user)
+    [user.latitude, user.longitude].join(',')
   end
+
+  def full_addr
+    "#{@user.zip}, #{@user.country.capitalize}, #{@user.state.capitalize}, #{@user.city.capitalize}, #{@user.address}"
+  end
+
 end

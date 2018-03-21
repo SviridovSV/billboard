@@ -70,3 +70,4 @@
 %p
   Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
 = link_to "Back", :back
+%iframe{:allowfullscreen => "", :frameborder => "0", :height => "640", :src => "https://www.google.com/maps/embed/v1/place?key=#{ENV['GOOGLE']}&q=#{coordinates(current_user)}", :style => "border:0", :width => "640"}

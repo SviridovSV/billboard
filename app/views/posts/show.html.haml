@@ -1,0 +1,13 @@
+%strong Image:
+%br
+= image_tag @post.image unless @post.image.blank?
+%br
+%strong Text:
+%br
+= @post.text
+%br
+= link_to 'Edit', edit_post_path(@post)
+|
+= link_to "Delete", post_path(@post), method: :delete, data: {confirm: "Really delete the post?"}
+%br
+= render partial: 'comments/form', post: @post

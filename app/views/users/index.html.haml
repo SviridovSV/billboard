@@ -1,4 +1,5 @@
 - @users.each do |user|
   %h3= user.login
   %h3= user.email
+  = link_to 'Profile', user_path(user)
   %br

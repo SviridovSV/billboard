@@ -4,6 +4,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:facebook]
 
   has_many :posts, dependent: :destroy
+  has_many :comments
 
   validates :login, :first_name, :last_name, :birthday, :address, :city,
             :state, :country, :zip, :email, presence: true
@@ -12,10 +13,27 @@ class User < ApplicationRecord
                                 message: 'Only letters allowed' }
   validates :login, uniqueness: { case_sensitive: false }
 
+  geocoded_by :full_address
+  after_save :geocode, if: :change_address?
+
+  ADDRESS_FIELDS = ['address', 'city', 'state', 'country']
+
   def self.from_omniauth(auth)
     where(email: auth.info.email).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
     end
+  end
+
+  def full_address
+    ADDRESS_FIELDS.compact.join(', ')
+  end
+
+  def change_address?
+    (self.saved_changes.transform_values(&:first).keys & ADDRESS_FIELDS).any?
+  end
+
+   def full_name
+    "#{first_name} #{last_name}"
   end
 end

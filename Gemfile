@@ -22,6 +22,13 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'figaro'
+gem 'geocoder'
+gem 'bootstrap'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog-aws'
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'factory_girl_rails'

@@ -4,7 +4,7 @@
       %li= error
   .form-group
     = f.label :text, for: "inputText"
-    = f.text_field :text, id: :inputText, placeholder: "Text of post", class: "form-control"
+    = f.text_area :text, id: :inputText, placeholder: "Text of post", class: "form-control"
     = f.label :image
     = f.file_field :image
 

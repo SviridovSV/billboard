@@ -4,7 +4,9 @@
 %br
 %strong Text:
 %br
-= @post.text
+%div
+  - array_of_words(@post.text).each do |word|
+    = textile_word(word) + ' '
 %br
 %div{:id => "buttons"}
   = link_to 'Edit', edit_post_path(@post)

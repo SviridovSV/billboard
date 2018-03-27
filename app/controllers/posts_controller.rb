@@ -41,14 +41,6 @@ class PostsController < ApplicationController
     redirect_to root_path, notice: 'Post was successfully destroyed'
   end
 
-  # def search
-  #   if !params[:search_phrase].blank?
-  #     @posts = SearchService.new(params[:search_phrase], params[:search_param]).filter_by_search_param
-  #   else
-  #     redirect_to root_path, notice: 'No phrase for search.'
-  #   end
-  # end
-
   private
 
   def set_post

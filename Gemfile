@@ -28,6 +28,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'RedCloth'
 gem 'acts-as-taggable-on'
+gem 'turbolinks', '~> 5'
 
 group :development, :test do
   gem 'factory_bot_rails'

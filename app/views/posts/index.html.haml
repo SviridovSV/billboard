@@ -1,1 +1,59 @@
-= render partial: 'list'
+.card.text-center
+  .card-body
+    %h5.card-title Find posts
+    = form_tag(root_url, method: :get) do
+      = text_field_tag 'search_phrase', nil, placeholder: "Text of search"
+      = radio_button_tag :search_param, 'by_tag', checked: true
+      = label_tag :search_param_by_tag, 'by tag'
+      = radio_button_tag :search_param, 'by_author'
+      = label_tag :search_param_by_author, 'by author'
+      = radio_button_tag :search_param, 'by_content'
+      = label_tag :search_param_by_content, 'by content'
+      = radio_button_tag :search_param, 'by_address'
+      = label_tag :search_param_by_address, 'by address'
+      = submit_tag "Find", class: "btn btn-primary"
+    %h5.card-title Create post
+    = link_to 'Create', new_post_path, class: "btn btn-primary"
+- @posts.each_slice(3) do |post1, post2, post3|
+  .card-group
+    .col-4
+      .card
+        = image_tag post_image(post1), class: "img card-img-top"
+        .card-body
+          %h5.card-title
+            = post_author(post1)
+          %p.card-text
+            = truncate(post1.text, :length => 160, separator: ' ')
+          = link_to 'Edit', edit_post_path(post1), class: "btn btn-primary"
+          = link_to "Delete", post_path(post1), method: :delete, data: {confirm: "Really delete the post?"}, class: "btn btn-primary"
+          = link_to "Show", post_path(post1), class: "btn btn-primary"
+        .card-footer
+          %small.text-muted Tags: #{post1.tag_list}
+    - if post2
+      .col-4
+        .card
+          = image_tag post_image(post2), class: "img card-img-top"
+          .card-body
+            %h5.card-title
+              = post_author(post2)
+            %p.card-text
+              = truncate(post2.text, :length => 160, separator: ' ')
+            = link_to 'Edit', edit_post_path(post2), class: "btn btn-primary"
+            = link_to "Delete", post_path(post2), method: :delete, data: {confirm: "Really delete the post?"}, class: "btn btn-primary"
+            = link_to "Show", post_path(post2), class: "btn btn-primary"
+          .card-footer
+            %small.text-muted Tags: #{post2.tag_list}
+    -if post3
+      .col-4
+        .card
+          = image_tag post_image(post3), class: "img card-img-top"
+          .card-body
+            %h5.card-title
+              = post_author(post3)
+            %p.card-text
+              = truncate(post3.text, :length => 160, separator: ' ')
+            = link_to 'Edit', edit_post_path(post3), class: "btn btn-primary"
+            = link_to "Delete", post_path(post3), method: :delete, data: {confirm: "Really delete the post?"}, class: "btn btn-primary"
+            = link_to "Show", post_path(post3), class: "btn btn-primary"
+          .card-footer
+            %small.text-muted Tags: #{post3.tag_list}

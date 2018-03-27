@@ -19,4 +19,8 @@ module PostsHelper
       doc.to_html
     end
   end
+
+  def post_image(post)
+    post.image.present? ? post.image.thumb.url : post.image.default_url
+  end
 end

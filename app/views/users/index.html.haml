@@ -1,5 +1,8 @@
 - @users.each do |user|
-  %h3= user.login
-  %h3= user.email
-  = link_to 'Profile', user_path(user)
-  %br
+  .card{:style => "width: 18rem;"}
+    .card-body
+      %h5.card-title
+        = user.login
+      %p.card-text
+        = user.email
+      = link_to 'Profile', user_path(user), class: "btn btn-primary"

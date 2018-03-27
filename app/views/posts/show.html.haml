@@ -5,8 +5,7 @@
 %strong Text:
 %br
 %div
-  - array_of_words(@post.text).each do |word|
-    = textile_word(word) + ' '
+  = render_haml(safe_textilize(@post.text))
 %br
 %div{:id => "buttons"}
   = link_to 'Edit', edit_post_path(@post)

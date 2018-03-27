@@ -2,7 +2,11 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :update, :destroy, :show]
 
   def index
-    @posts = Post.all
+    if params[:search_phrase].present?
+      @posts = SearchService.new(params[:search_phrase], params[:search_param]).filter_by_search_param
+    else
+      @posts = Post.all
+    end
   end
 
   def new
@@ -37,6 +41,14 @@ class PostsController < ApplicationController
     redirect_to root_path, notice: 'Post was successfully destroyed'
   end
 
+  # def search
+  #   if !params[:search_phrase].blank?
+  #     @posts = SearchService.new(params[:search_phrase], params[:search_param]).filter_by_search_param
+  #   else
+  #     redirect_to root_path, notice: 'No phrase for search.'
+  #   end
+  # end
+
   private
 
   def set_post
@@ -44,6 +56,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:text, :user_id, :image)
+    params.require(:post).permit(:text, :user_id, :image, :tag_list, :search_phrase, :search_param)
   end
 end

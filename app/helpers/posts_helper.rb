@@ -12,19 +12,11 @@ module PostsHelper
     engine.render
   end
 
-  def array_of_words(text)
-    text.split(' ')
-  end
-
-  def textile_word(word)
-    return render_haml(textilize(word)) if textile_text(@post.text).include?(word)
-    word
-  end
-
-  private
-
-  def textile_text(text)
-    t = text.split(' ') - RedCloth.new(text).to_html.split(' ')
-    t.empty? ? false : t
+  def safe_textilize(str)
+    if str && str.respond_to?(:to_s)
+      doc = RedCloth.new(str.to_s)
+      doc.filter_html = true
+      doc.to_html
+    end
   end
 end

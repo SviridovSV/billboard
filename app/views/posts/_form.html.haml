@@ -7,6 +7,9 @@
     = f.text_area :text, id: :inputText, placeholder: "Text of post", class: "form-control"
     = f.label :image
     = f.file_field :image
+    %br/
+    = f.label :tag_list, "Tags (separated by commas)"
+    = f.text_field :tag_list
 
   = f.hidden_field :user_id, value: current_user.id
   = f.submit "Create", class: "btn btn-primary"

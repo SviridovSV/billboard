@@ -4,9 +4,9 @@
     %span.navbar-toggler-icon
   #navbarNavAltMarkup.collapse.navbar-collapse
     .navbar-nav
+      = link_to 'Users', users_path, class: "nav-item nav-link"
+      = link_to 'Posts', root_path, class: "nav-item nav-link"
       - if user_signed_in?
-        = link_to 'Users', users_path, class: "nav-item nav-link"
-        = link_to 'Posts', root_path, class: "nav-item nav-link"
         = link_to 'My Profile', edit_user_registration_path, class: "nav-item nav-link"
         = link_to 'Log out', destroy_user_session_path, method: :delete, class: "nav-item nav-link"
       - else

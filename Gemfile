@@ -1,34 +1,33 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.1.4'
-gem 'pg', '~> 0.18'
-gem 'puma', '~> 3.7'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
+gem 'acts-as-taggable-on'
+gem 'bootstrap'
+gem 'cancancan', '~> 2.0'
+gem 'carrierwave'
 gem 'coffee-rails', '~> 4.2'
-gem 'jquery-rails'
-gem 'jbuilder', '~> 2.5'
-gem 'haml'
-gem 'haml-rails'
-gem 'ffaker'
 gem 'devise'
-gem 'omniauth'
-gem 'omniauth-facebook'
+gem 'ffaker'
 gem 'figaro'
 gem 'geocoder'
-gem 'bootstrap'
-gem 'carrierwave'
+gem 'haml'
+gem 'haml-rails'
+gem 'jbuilder', '~> 2.5'
+gem 'jquery-rails'
 gem 'mini_magick'
-gem 'carrierwave'
-gem 'mini_magick'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'pg', '~> 0.18'
+gem 'puma', '~> 3.7'
+gem 'rails', '~> 5.1.4'
 gem 'RedCloth'
-gem 'acts-as-taggable-on'
+gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
+gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'factory_bot_rails'

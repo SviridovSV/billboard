@@ -4,7 +4,8 @@ class PostsController < ApplicationController
 
   def index
     if params[:search_phrase].present?
-      @posts = SearchService.new(params[:search_phrase], params[:search_param]).filter_by_search_param
+      @posts = SearchService.new(params[:search_phrase],
+                                 params[:search_param]).filter_by_search_param
     else
       @posts = Post.all
     end
@@ -49,6 +50,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:text, :user_id, :image, :tag_list, :search_phrase, :search_param)
+    params.require(:post).permit(:text, :user_id, :image,
+                                 :tag_list, :search_phrase, :search_param)
   end
 end

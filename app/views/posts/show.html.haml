@@ -7,10 +7,11 @@
 %div
   = render_haml(safe_textilize(@post.text))
 %br
-%div{:id => "buttons"}
-  = link_to 'Edit', edit_post_path(@post)
-  |
-  = link_to "Delete", post_path(@post), method: :delete, data: {confirm: "Really delete the post?"}
+- if can? :manage, @post
+  %div{:id => "buttons"}
+    = link_to 'Edit', edit_post_path(@post)
+    |
+    = link_to "Delete", post_path(@post), method: :delete, data: {confirm: "Really delete the post?"}
 %br
 %div{:id => "comments"}
   = render partial: 'posts/comment', collection: @post.comments.reverse

@@ -18,12 +18,7 @@ class User < ApplicationRecord
 
   ADDRESS_FIELDS = ['address', 'city', 'state', 'country']
 
-  enum role: [:user, :moderator, :admin]
-  after_initialize :set_default_role, if: :new_record?
-
-  def set_default_role
-    self.role ||= :user
-  end
+  enum role: [:moderator, :admin]
 
   def self.from_omniauth(auth)
     where(email: auth.info.email).first_or_create do |user|

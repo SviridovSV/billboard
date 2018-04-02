@@ -13,11 +13,10 @@ module PostsHelper
   end
 
   def safe_textilize(str)
-    if str && str.respond_to?(:to_s)
-      doc = RedCloth.new(str.to_s)
-      doc.filter_html = true
-      doc.to_html
-    end
+    return unless str && str.respond_to?(:to_s)
+    doc = RedCloth.new(str.to_s)
+    doc.filter_html = true
+    doc.to_html
   end
 
   def post_image(post)

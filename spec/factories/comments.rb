@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :comment do
-    body "MyText"
-    post nil
-    user nil
+    body FFaker::LoremRU.paragraph
+    association :post
+    association :user
   end
 end

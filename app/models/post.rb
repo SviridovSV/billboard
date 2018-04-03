@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   acts_as_taggable
 
+  validates :text, presence: true
   mount_uploader :image, ImageUploader
 
   scope :filter_by_author, -> (author) { joins(:user).where(users: { login: author }) }

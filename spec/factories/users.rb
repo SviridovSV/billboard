@@ -6,10 +6,10 @@ FactoryBot.define do
     first_name FFaker::Name.first_name
     last_name FFaker::Name.last_name
     birthday FFaker::IdentificationESCO.expedition_date
-    address FFaker::AddressUA.street_address
-    city FFaker::AddressUA.city
-    state FFaker::AddressUA.province
-    country FFaker::AddressUA.country
+    address '24 tytova'
+    city 'dnipro'
+    state 'dnipropetrovsk'
+    country 'ukraine'
     zip FFaker::AddressUA.zip_code
   end
 end

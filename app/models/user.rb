@@ -12,9 +12,7 @@ class User < ApplicationRecord
   validates :login, uniqueness: { case_sensitive: false }
 
   geocoded_by :full_address
-  after_save :geocode, if: :change_address?
-
-  ADDRESS_FIELDS = ['address', 'city', 'state', 'country']
+  before_save :geocode
 
   enum role: [:moderator, :admin]
 
@@ -26,11 +24,7 @@ class User < ApplicationRecord
   end
 
   def full_address
-    ADDRESS_FIELDS.compact.join(', ')
-  end
-
-  def change_address?
-    (saved_changes.transform_values(&:first).keys & ADDRESS_FIELDS).any?
+    [address, city, state, country].compact.join(', ')
   end
 
   def full_name

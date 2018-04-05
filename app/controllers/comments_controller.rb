@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  load_and_authorize_resource only: :destroy
+
   def create
     @comment = Comment.new(comment_params)
     @comment.post_id = params[:post_id]
@@ -14,7 +16,6 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = current_user.comments.find(params[:id])
     @comment.destroy
 
     respond_to do |f|

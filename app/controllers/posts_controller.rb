@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:edit, :update, :destroy, :show]
   skip_before_action :authenticate_user!, only: :index
+  load_and_authorize_resource only: [:edit, :update, :destroy, :show]
 
   def index
     if params[:search_phrase].present?
@@ -44,10 +44,6 @@ class PostsController < ApplicationController
   end
 
   private
-
-  def set_post
-    @post = Post.find(params[:id])
-  end
 
   def post_params
     params.require(:post).permit(:text, :user_id, :image,

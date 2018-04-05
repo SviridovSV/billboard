@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, except: :index
   skip_before_action :authenticate_user!, only: :index
+  load_and_authorize_resource
+  skip_authorize_resource only: :index
 
   def index
     @users = User.all
@@ -31,9 +32,5 @@ class UsersController < ApplicationController
     params.require(:user).permit(:login, :first_name, :last_name,
                                  :birthday, :email, :address, :city,
                                  :state, :country, :zip, :role)
-  end
-
-  def set_user
-    @user = User.find(params[:id])
   end
 end

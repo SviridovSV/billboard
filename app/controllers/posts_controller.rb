@@ -7,7 +7,7 @@ class PostsController < ApplicationController
       @posts = SearchService.new(params[:search_phrase],
                                  params[:search_param]).filter_by_search_param
     else
-      @posts = Post.all
+      @posts = Post.all.includes(:user, :taggings)
     end
   end
 
@@ -25,6 +25,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comments = @post.comments.includes(:user)
   end
 
   def edit

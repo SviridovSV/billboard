@@ -7,8 +7,9 @@ class PostsController < ApplicationController
       @posts = SearchService.new(params[:search_phrase],
                                  params[:search_param]).filter_by_search_param
     else
-      @posts = Post.all.includes(:user, :taggings)
+      @posts = Post.all
     end
+    @posts = @posts.includes(:user, :taggings)
   end
 
   def new

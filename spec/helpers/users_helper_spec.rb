@@ -1,15 +1,19 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the UsersHelper. For example:
-#
-# describe UsersHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe UsersHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:user) { create(:user, zip: 36143) }
+
+  describe '.coordinates' do
+    it 'returns coordinates separated with coma' do
+      example = '40.7143528,-74.0059731'
+      expect(helper.coordinates(user)).to eq(example)
+    end
+  end
+  describe '.full_addr' do
+    it 'returnes full address' do
+      example = "36143, Ukraine, Dnipropetrovsk, Dnipro, 24 tytova"
+      instance_variable_set(:@user, user)
+      expect(helper.full_addr).to eq(example)
+    end
+  end
 end

@@ -10,6 +10,7 @@ require 'rspec/rails'
 require 'capybara/rspec'
 require 'cancan/matchers'
 require 'support/geocoder_stub.rb'
+require 'support/omniauth_macros.rb'
 
 ActiveRecord::Migration.maintain_test_schema!
 
@@ -17,7 +18,9 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.include FactoryBot::Syntax::Methods
   config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Warden::Test::Helpers
   config.include GeocoderStub
+  config.include OmniauthMacros
   config.use_transactional_fixtures = false
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!

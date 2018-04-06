@@ -1,5 +1,5 @@
 %h2 Add a comment:
-= form_for([@post, @post.comments.build], remote: true) do |f|
+= form_for([post, post.comments.build], remote: true) do |f|
   .field
     = f.label :body
     %br/

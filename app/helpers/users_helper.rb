@@ -4,7 +4,6 @@ module UsersHelper
   end
 
   def full_addr
-    "#{@user.zip}, #{@user.country.capitalize},
-     #{@user.state.capitalize}, #{@user.city.capitalize}, #{@user.address}"
+    "#{@user.zip}, #{@user.country.capitalize}, #{@user.state.capitalize}, #{@user.city.capitalize}, #{@user.address}"
   end
 end
